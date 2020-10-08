@@ -43,6 +43,12 @@ exports.signin = (req, res) => {
         error: "USER email does not exists"
       });
     }
+    User.findname({ name }, (err, user) => {
+    if (err || !user) {
+      return res.status(400).json({
+        error: "USER name does not exists"
+      });
+    }
 
     if (!user.autheticate(password)) {
       return res.status(401).json({
