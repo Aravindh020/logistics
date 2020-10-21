@@ -3,14 +3,14 @@ const { check, validationResult } = require("express-validator");
 var jwt = require("jsonwebtoken");
 var expressJwt = require("express-jwt");
 
-exports.signup = (req, res) => {
-  const errors = validationResult(req);
+// exports.signup = (req, res) => {
+//   const errors = validationResult(req);
 
-  if (!errors.isEmpty()) {
-    return res.status(422).json({
-      error: errors.array()[0].msg
-    });
-  }
+//   if (!errors.isEmpty()) {
+//     return res.status(422).json({
+//       error: errors.array()[0].msg
+//     });
+//   }
 
   const user = new User(req.body);
   user.save((err, user) => {
