@@ -11,7 +11,10 @@ var expressJwt = require("express-jwt");
 //       error: errors.array()[0].msg
 //     });
 //   }
-
+if (!error.isEmpty()){
+  return res.status(402).json({
+    error: errors.array()[0].msg
+});
   const user = new User(req.body);
   user.save((err, user) => {
     if (err) {
